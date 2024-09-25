@@ -9,7 +9,7 @@ ver = pd.__version__
 print(ver)
 
 print("---------------- Question 2 records count  -----------")
-df = pd.read_csv(r"C:\Users\Sarra Dehili\Documents\ML\1 - intro to ML\laptops.csv")
+df = pd.read_csv(r"C:\Users\admin\Documents\ML\1 - intro to ML\laptops.csv")
 print(df.shape[0])
 print(df.head(2))
 

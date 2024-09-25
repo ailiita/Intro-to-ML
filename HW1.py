@@ -1,31 +1,28 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 25 12:29:08 2024
-
-@author: Sarra Dehili
-"""
 import numpy as np
 import pandas as pd
 
 np.set_printoptions(suppress=True)
 
+
+print("---------------- Question 1  Panda version  -----------")
 ver = pd.__version__
 print(ver)
 
-
+print("---------------- Question 2 records count  -----------")
 df = pd.read_csv(r"C:\Users\Sarra Dehili\Documents\ML\1 - intro to ML\laptops.csv")
-
+print(df.shape[0])
 print(df.head(2))
 
-print("---------------- Laptop rands -----------")
+print("---------------- Question 3  Laptop brands -----------")
 print(df.Brand.nunique())
 
-print("---------------- Number of Nan  -----------")
+print("---------------- Question 4 Missing Values  -----------")
 print(df.isnull().sum())
 
-print("---------------- Max Final Price per Brand  -----------")
+print("---------------- Question 5 Max Final Price per Brand  -----------")
 print(df.groupby("Brand")[["Final Price"]].max())
 
+print("---------------- Question 6 Median Value of screen  -----------")
 med = df["Screen"].median()
 print(f"The median value of Screen is : {med}")
 
@@ -39,23 +36,18 @@ med = df["Screen"].median()
 print(f"The median value of Screen is : {med}")
 
 
-print("---------------- ------- -----------")
+print("---------------- Question 7 Sum of weights  -----------")
 
-
-# Recuperer colonnes d'interet
 newdf = df[['Brand', 'RAM', 'Storage', 'Screen']]
-print(newdf)
-
-#Trier par marque et extraire colonne MARQUE Innjoo
+#print(newdf)
 group = newdf.groupby('Brand')
-print(group)
+#print(group)
 new_group = group.get_group('Innjoo')
 print(new_group)
 
-#obtenir matrice des valeurs
+# Get numpy array
 X = new_group[['RAM', 'Storage', 'Screen']].values
 print(X)
-
 
 XTX = np.dot(X.T,X)
 print(f'Dot Product of XT and X is :\n{XTX}')
